@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int mySqrt(int x) {
+        if(x==1||x==0)
+        return x;
+        int low =0;
+        int high=x/2;
+        int res;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            long long square=(long long)mid*mid;
+            if(square<x){
+                low=mid+1;
+                res=mid;
+            }
+            else if(square>x)
+            high=mid-1;
+            else{
+                res=mid;
+                break;
+            }
+        }
+        return res;
+        
+    }
+};
