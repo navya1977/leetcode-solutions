@@ -1,0 +1,23 @@
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int n=nums.size();
+        int left=0,right=0;
+        double wsum=0;
+        double maxavg=INT_MIN;
+        while(right<n){
+            wsum+=nums[right];
+        
+            if(right-left+1>k){
+                wsum-=nums[left];
+                left++;
+            }
+            if(right-left+1==k){
+               double avg=wsum/k;
+               maxavg=max(maxavg,avg);
+            }
+            right++;
+        }
+        return maxavg;
+    }
+};
