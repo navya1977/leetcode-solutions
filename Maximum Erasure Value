@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maximumUniqueSubarray(vector<int>& nums) {
+        int i = 0, j= 0;
+        int n = nums.size();
+        map<int, int> mp;
+        int sum = 0, maxlen = 0;
+        while (j<n) {
+            mp[nums[j]]++;
+            sum += nums[j];
+            while (j-i+1> mp.size()) {
+                mp[nums[i]]--;
+                sum -= nums[i];
+                if (mp[nums[i]] == 0)mp.erase(nums[i]);
+                i++;
+            }
+            maxlen= max(maxlen,sum);
+            j++;
+        }
+        return maxlen;
+    }
+};
