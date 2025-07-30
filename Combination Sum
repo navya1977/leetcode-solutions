@@ -1,0 +1,26 @@
+class Solution {
+public:
+
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>>ans;
+        vector<int>nums=candidates;
+        vector <int> temp;
+        combination(ans,nums,0,0,target,temp);
+        return ans;
+    }
+        void combination(vector<vector<int>>& ans,vector<int> nums,int index,int sum,int target,vector<int> & temp){
+            if(sum == target){
+            ans.push_back(temp);
+            return;
+        }
+        if(sum>target)
+        return;
+        if(index >= nums.size())
+        return;
+        temp.push_back(nums[index]);
+        combination(ans,nums,index,sum+nums[index],target,temp);
+        temp.pop_back();
+        combination(ans,nums,index+1,sum,target,temp);
+        
+    }
+};
