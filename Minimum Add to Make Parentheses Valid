@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int a=0,c=0;
+        for(auto i:s){
+            if(i=='(')c++;
+            else if(i==')' && c==0)a++;
+            else c--;
+        }
+        return abs(a+c);
+    }
+};
