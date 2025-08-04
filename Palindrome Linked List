@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        vector<int>linkedlist;
+        while(head){
+            linkedlist.push_back(head->val);
+            head=head->next;
+        }
+        int left=0,right=linkedlist.size()-1;
+        while(left<right && linkedlist[left]==linkedlist[right]){
+            left++;
+            right--;
+        }
+        return left >=right;
+
+        
+    }
+};
