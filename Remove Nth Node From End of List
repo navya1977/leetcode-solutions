@@ -1,0 +1,22 @@
+Remove Nth Node From End of Listclass Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int total = 0;
+        ListNode* curr = head;
+        while (curr) {
+            total++;
+            curr = curr->next;
+        }
+        int target = total - n;
+        if (target == 0) {
+            return head->next;
+        }
+        ListNode* ans = head;
+        while (target > 1) {
+            ans = ans->next;
+            target--;
+        }
+        ans->next = ans->next->next;
+        return head;
+    }
+};
